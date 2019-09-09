@@ -1,7 +1,7 @@
 ﻿// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Custom/LowpolyShader"
+Shader "ZDStudio/Water"
 {
 	Properties
 	{
@@ -22,6 +22,9 @@ Shader "Custom/LowpolyShader"
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
+
+			#pragma multi_compile_fog
+
 			#include "UnityCG.cginc"
 			#include "UnityLightingCommon.cginc"
 
