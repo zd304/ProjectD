@@ -146,9 +146,9 @@ public class WaveEffect : MonoBehaviour
             {
                 Vector3 p = origPositions[t * 3 + i];
 
-                float offsetX = Mathf.Cos(timer + p.x + p.y);
-                float offsetY = Mathf.Sin(timer + p.x + p.y);
-                float offsetZ = Mathf.Sin(timer + p.x + p.y);
+                float offsetX = Mathf.Cos(timer + (p.x + p.y) * 0.5f);
+                float offsetY = Mathf.Sin(timer + (p.x + p.y) * 0.5f);
+                float offsetZ = Mathf.Sin(timer + (p.x + p.y) * 0.5f);
 
                 Vector3 pos = new Vector3(offsetX, offsetY, offsetZ) * randomWeight[t * 3 + i] + origPositions[t * 3 + i];
                 dynamicPositions[t * 3 + i] = pos;
