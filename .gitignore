@@ -1,3 +1,9 @@
 /Client/*
 /Client/*.unitypackage
 /Client/Assets/Scenes
+/Server/GameServer/.vs
+/Server/GameServer/obj
+/Server/GameServer/Properties
+/Server/GameServer/bin
+/Server/bin_Win64/log
+/Server/bin_Win64/.vs
