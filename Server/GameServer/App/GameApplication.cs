@@ -29,6 +29,7 @@ namespace GameServer
 
             Debug.Initialize(this);
             NHibernateHelper.Initialize();
+
         }
 
         /// <summary>
