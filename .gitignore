@@ -8,3 +8,6 @@
 /Server/bin_Win64/log
 /Server/bin_Win64/.vs
 /Server/log
+/Server/LobbyServer/.vs
+/Server/LobbyServer/bin
+/Server/LobbyServer/obj
