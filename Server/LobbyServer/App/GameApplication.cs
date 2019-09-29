@@ -13,7 +13,13 @@ namespace LobbyServer
 
         protected override PeerBase CreatePeer(InitRequest initRequest)
         {
-            return new GamePeer(initRequest);
+            if (initRequest.LocalPort == 4520)
+            {
+                GameServerPeer serverPeer = new GameServerPeer(initRequest);
+                return serverPeer;
+            }
+            GameClientPeer clientPeer = new GameClientPeer(initRequest);
+            return clientPeer;
         }
 
         /// <summary>
