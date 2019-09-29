@@ -14,12 +14,12 @@ namespace GameServer
 
         protected override void OnConnectionEstablished(object responseObject)
         {
-            Debug.Log("连接服务器成功");
+            Debug.Log("连接Lobby服务器成功");
         }
 
         protected override void OnConnectionFailed(int errorCode, string errorMessage)
         {
-            Debug.Log("连接服务器失败");
+            Debug.Log("连接Lobby服务器失败");
         }
 
         protected override void OnDisconnect(DisconnectReason reasonCode, string reasonDetail)
