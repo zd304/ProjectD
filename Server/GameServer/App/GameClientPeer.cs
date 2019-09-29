@@ -4,9 +4,9 @@ using PhotonHostRuntimeInterfaces;
 
 namespace GameServer
 {
-    public class GamePeer : ClientPeer
+    public class GameClientPeer : ClientPeer
     {
-        public GamePeer(InitRequest rqst)
+        public GameClientPeer(InitRequest rqst)
             : base(rqst)
         {
 

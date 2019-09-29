@@ -15,6 +15,7 @@ namespace LobbyServer
         {
             if (initRequest.LocalPort == 4520)
             {
+                Debug.Log("连接到Game服务器：" + initRequest.LocalIP);
                 GameServerPeer serverPeer = new GameServerPeer(initRequest);
                 return serverPeer;
             }

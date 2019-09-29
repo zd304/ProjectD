@@ -4,16 +4,17 @@ using System.Text;
 using Photon.SocketServer;
 using NHibernate;
 using NHibernate.Cfg;
+using System.Net;
 
 namespace GameServer
 {
     public class GameApplication : ApplicationBase
     {
-
+        private GameServerPeer outboundPeer;
 
         protected override PeerBase CreatePeer(InitRequest initRequest)
         {
-            return new GamePeer(initRequest);
+            return new GameClientPeer(initRequest);
         }
 
         /// <summary>
@@ -22,6 +23,9 @@ namespace GameServer
         protected override void Setup()
         {
             System.Diagnostics.Debugger.Launch();
+
+            outboundPeer = new GameServerPeer(this);
+            outboundPeer.ConnectTcp(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 4520), "LobbyServer");
 
             Debug.Initialize(this);
             NHibernateHelper.Initialize();
