@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "LobbyServer": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}

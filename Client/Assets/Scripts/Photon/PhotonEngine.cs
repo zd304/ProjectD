@@ -49,6 +49,8 @@ public partial class PhotonEngine : MonoBehaviour, IPhotonPeerListener
         peer.Connect("127.0.0.1:5055", "LobbyServer");
 
         RegistRequests();
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Login");
     }
 
     public void DoRequest<T>(Operation.OperationCode opCode, T obj)

@@ -1,4 +1,7 @@
-/Client/*
+/Client/.vs/*
+/Client/Library/*
+/Client/obj/*
+/Client/Temp/*
 /Client/*.unitypackage
 /Client/Assets/Scenes
 /Server/GameServer/.vs

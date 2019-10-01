@@ -7,6 +7,7 @@ namespace Operation
     public enum OperationCode : byte
     {
         Login,
+        Regist,
     }
 }
 
@@ -17,6 +18,7 @@ namespace LobbyServer
         private void RegisterHandlers()
         {
             RegisterHandler(new LoginHandler());
+            RegisterHandler(new RegistHandler());
         }
     }
 }

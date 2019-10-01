@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class UILogin : MonoBehaviour
+public class UIRegist : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,17 +16,17 @@ public class UILogin : MonoBehaviour
         
     }
 
-    public void OnClickLogin()
+    public void OnClickRegist()
     {
         Operation.UserInfo userInfo = new Operation.UserInfo();
         userInfo.username = username.text;
         userInfo.password = password.text;
-        PhotonEngine.Instance.DoRequest<Operation.UserInfo>(Operation.OperationCode.Login, userInfo);
+        PhotonEngine.Instance.DoRequest<Operation.UserInfo>(Operation.OperationCode.Regist, userInfo);
     }
 
-    public void JumpToRegist()
+    public void BackToLogin()
     {
-        SceneManager.LoadScene("Regist");
+        SceneManager.LoadScene("Login");
     }
 
     public InputField username;
