@@ -7,9 +7,10 @@ using NHibernate.Cfg;
 
 namespace LobbyServer
 {
-    public class GameApplication : ApplicationBase
+    public partial class GameApplication : ApplicationBase
     {
-
+        List<GameClientPeer> clientPeers = new List<GameClientPeer>();
+        Dictionary<Operation.OperationCode, BaseHandler> handlers = new Dictionary<Operation.OperationCode, BaseHandler>();
 
         protected override PeerBase CreatePeer(InitRequest initRequest)
         {
@@ -20,6 +21,7 @@ namespace LobbyServer
                 return serverPeer;
             }
             GameClientPeer clientPeer = new GameClientPeer(initRequest);
+            clientPeers.Add(clientPeer);
             return clientPeer;
         }
 
@@ -41,6 +43,31 @@ namespace LobbyServer
         {
             NHibernateHelper.Uninitialize();
             Debug.Uninitialize();
+        }
+
+        public void RemovePeer(GameClientPeer clientPeer)
+        {
+            clientPeers.Remove(clientPeer);
+        }
+
+        public BaseHandler GetHandler(Operation.OperationCode opCode)
+        {
+            BaseHandler handler;
+            if (!handlers.TryGetValue(opCode, out handler))
+            {
+                return null;
+            }
+            return handler;
+        }
+
+        public void RegisterHandler(BaseHandler handler)
+        {
+            handlers.Add(handler.OpCode, handler);
+        }
+
+        public void UnregisterHandler(Operation.OperationCode opCode)
+        {
+            handlers.Remove(opCode);
         }
     }
 }

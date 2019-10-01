@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellX: 64
   cellZ: 64
-  cellSize: 5
+  cellSize: 20
 --- !u!33 &594652226
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -434,11 +434,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 140334747}
     m_Modifications:
-    - target: {fileID: 7491316970062836045, guid: d6f5e808a15ec794cbf3d7f913abb679,
-        type: 3}
-      propertyPath: m_Name
-      value: town
-      objectReference: {fileID: 0}
     - target: {fileID: 7491316970062836044, guid: d6f5e808a15ec794cbf3d7f913abb679,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -493,6 +488,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491316970062836045, guid: d6f5e808a15ec794cbf3d7f913abb679,
+        type: 3}
+      propertyPath: m_Name
+      value: town
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6f5e808a15ec794cbf3d7f913abb679, type: 3}
@@ -1022,16 +1022,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1908703022}
     m_Modifications:
-    - target: {fileID: 6585151139367565254, guid: 3413c9404235a4347b52d207053a2588,
-        type: 3}
-      propertyPath: m_Name
-      value: plane
-      objectReference: {fileID: 0}
-    - target: {fileID: 6585151139367565254, guid: 3413c9404235a4347b52d207053a2588,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6585151139367565255, guid: 3413c9404235a4347b52d207053a2588,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1085,6 +1075,16 @@ PrefabInstance:
     - target: {fileID: 6585151139367565255, guid: 3413c9404235a4347b52d207053a2588,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585151139367565254, guid: 3413c9404235a4347b52d207053a2588,
+        type: 3}
+      propertyPath: m_Name
+      value: plane
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585151139367565254, guid: 3413c9404235a4347b52d207053a2588,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

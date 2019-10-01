@@ -7,6 +7,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>bin/</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>3</WarningLevel>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -59,6 +60,10 @@
     </Reference>
     <Reference Include="PhotonHostRuntimeInterfaces">
       <HintPath>lib\PhotonHostRuntimeInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>lib\protobuf-net.dll</HintPath>
+      <Private>true</Private>
     </Reference>
     <Reference Include="Renci.SshNet">
       <HintPath>bin\Renci.SshNet.dll</HintPath>
