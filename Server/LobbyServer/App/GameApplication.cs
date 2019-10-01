@@ -32,6 +32,7 @@ namespace LobbyServer
         {
             System.Diagnostics.Debugger.Launch();
 
+            RegisterHandlers();
             Debug.Initialize(this);
             NHibernateHelper.Initialize();
         }

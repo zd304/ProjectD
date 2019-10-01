@@ -46,7 +46,7 @@ public partial class PhotonEngine : MonoBehaviour, IPhotonPeerListener
         GameObject.DontDestroyOnLoad(gameObject);
 
         peer = new PhotonPeer(this, ConnectionProtocol.Udp);
-        peer.Connect("127.0.0.1", "LobbyServer");
+        peer.Connect("127.0.0.1:5055", "LobbyServer");
 
         RegistRequests();
     }

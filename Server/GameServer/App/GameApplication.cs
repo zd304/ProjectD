@@ -22,7 +22,7 @@ namespace GameServer
         /// </summary>
         protected override void Setup()
         {
-            System.Diagnostics.Debugger.Launch();
+            // System.Diagnostics.Debugger.Launch();
 
             outboundPeer = new GameServerPeer(this);
             outboundPeer.ConnectTcp(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 4520), "LobbyServer");

@@ -64,7 +64,7 @@ namespace LobbyServer
             using (ISession session = NHibernateHelper.OpenSession())
             {
                 ICriteria criteria = session.CreateCriteria(typeof(Model.UserInfo));
-                criteria.Add(Restrictions.Eq("username", userName));
+                criteria.Add(Restrictions.Eq("UserName", userName));
                 userInfo = criteria.UniqueResult<Model.UserInfo>();
             }
             return userInfo;
