@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
 using ProtoBuf;
+using Photon.SocketServer;
+using System.Collections.Generic;
 
 namespace LobbyServer
 {
-    public static class SerializeHelper
+    public static class PackageHelper
     {
         public static byte[] Serialize<T>(T instance)
         {
@@ -25,6 +27,13 @@ namespace LobbyServer
             {
                 return Serializer.Deserialize<T>(ms);
             }
+        }
+
+        public static void SetData(OperationResponse response, byte[] bytes)
+        {
+            Dictionary<byte, object> data = new Dictionary<byte, object>();
+            data[0] = bytes;
+            response.Parameters = data;
         }
     }
 }

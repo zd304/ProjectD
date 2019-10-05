@@ -13,5 +13,5 @@ public abstract class Request
 
     public abstract void DoRequest<T>(T obj);
 
-    public abstract void OnOperationResponse(ReturnCode returnCode);
+    public abstract void OnOperationResponse(ReturnCode returnCode, byte[] returnData);
 }

@@ -9,7 +9,7 @@ namespace LobbyServer
 
         public override void OnOperateRequest(byte[] bytes, ClientPeer peer, SendParameters sendParameters)
         {
-            Operation.UserInfo userInfo = SerializeHelper.Desirialize<Operation.UserInfo>(bytes);
+            Operation.UserInfo userInfo = PackageHelper.Desirialize<Operation.UserInfo>(bytes);
             Model.UserInfo dbUser = UserManager.GetByUserName(userInfo.username);
 
             OperationResponse response = new OperationResponse((byte)OperationCode.Regist);

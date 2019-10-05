@@ -17,11 +17,11 @@ public class RegistRequest : Request
 
     public override void DoRequest<T>(T obj)
     {
-        byte[] bytes = SerializeHelper.Serialize<T>(obj);
+        byte[] bytes = PackageHelper.Serialize<T>(obj);
         DoRequest(bytes);
     }
 
-    public override void OnOperationResponse(ReturnCode returnCode)
+    public override void OnOperationResponse(ReturnCode returnCode, byte[] returnData)
     {
         if (returnCode == Operation.ReturnCode.Success)
         {

@@ -41,6 +41,11 @@ public partial class PhotonEngine : MonoBehaviour, IPhotonPeerListener
         instance = null;
     }
 
+    void OnApplicationQuit()
+    {
+        peer.Disconnect();
+    }
+
     void Start()
     {
         GameObject.DontDestroyOnLoad(gameObject);
@@ -73,6 +78,14 @@ public partial class PhotonEngine : MonoBehaviour, IPhotonPeerListener
         request.DoRequest(bytes);
     }
 
+    public void Reconnect(string ip, string port, string app)
+    {
+        peer.Disconnect();
+        string ipAndPort = ip + ":" + port;
+        Debug.Log("重连服务器：" + ipAndPort + "，应用名：" + app);
+        peer.Connect(ipAndPort, app);
+    }
+
     void Update()
     {
         peer.Service();
@@ -94,7 +107,14 @@ public partial class PhotonEngine : MonoBehaviour, IPhotonPeerListener
             return;
         }
         Operation.ReturnCode returnCode = (Operation.ReturnCode)operationResponse.ReturnCode;
-        request.OnOperationResponse(returnCode);
+        object param0;
+        if (!operationResponse.Parameters.TryGetValue(0, out param0))
+        {
+            param0 = null;
+        }
+
+        byte[] paramBytes = param0 as byte[];
+        request.OnOperationResponse(returnCode, paramBytes);
     }
 
     public void OnStatusChanged(StatusCode statusCode)

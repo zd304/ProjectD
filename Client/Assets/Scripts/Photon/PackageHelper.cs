@@ -2,7 +2,7 @@
 using System.IO;
 using ProtoBuf;
 
-public static class SerializeHelper
+public static class PackageHelper
 {
     public static byte[] Serialize<T>(T instance)
     {

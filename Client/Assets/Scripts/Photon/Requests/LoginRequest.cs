@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Operation;
 
 public class LoginRequest : Request
 {
@@ -9,15 +10,18 @@ public class LoginRequest : Request
     public string password;
 
     public LoginRequest()
-        : base(Operation.OperationCode.Login)
+        : base(OperationCode.Login)
     {
     }
 
-    public override void OnOperationResponse(Operation.ReturnCode returnCode)
+    public override void OnOperationResponse(ReturnCode returnCode, byte[] returnData)
     {
         if (returnCode == Operation.ReturnCode.Success)
         {
+            LoginSuccessResponse obj = PackageHelper.Desirialize<LoginSuccessResponse>(returnData);
             SceneManager.LoadScene("MonoPoly1");
+
+            PhotonEngine.Instance.Reconnect(obj.ip, obj.port, obj.application);
         }
     }
 
@@ -30,7 +34,7 @@ public class LoginRequest : Request
 
     public override void DoRequest<T>(T obj)
     {
-        byte[] bytes = SerializeHelper.Serialize<T>(obj);
+        byte[] bytes = PackageHelper.Serialize<T>(obj);
         DoRequest(bytes);
     }
 }
