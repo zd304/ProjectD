@@ -14,6 +14,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Common\**" />
+    <EmbeddedResource Remove="Common\**" />
+    <None Remove="Common\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="hibernate.cfg.xml" />
     <None Remove="Mappings\UserInfo.hbm.xml" />
   </ItemGroup>
@@ -26,6 +32,10 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Mappings\UserInfo.hbm.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Operation\Operation.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +64,9 @@
     <Reference Include="PhotonHostRuntimeInterfaces">
       <HintPath>lib\PhotonHostRuntimeInterfaces.dll</HintPath>
     </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\LobbyServer\lib\protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="Renci.SshNet">
       <HintPath>bin\Renci.SshNet.dll</HintPath>
     </Reference>
@@ -78,10 +91,6 @@
     <None Update="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Common\" />
   </ItemGroup>
 
 </Project>
