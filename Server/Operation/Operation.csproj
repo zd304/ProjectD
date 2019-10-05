@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy $(TargetDir)$(TargetFileName) $(TargetDir)\..\..\..\..\Client\Assets\Plugins\ /y" />
+    <Exec Command="xcopy $(TargetDir)$(TargetFileName) $(TargetDir)\..\..\..\..\Client\Assets\Plugins\ /y&#xD;&#xA;xcopy $(TargetDir)$(TargetFileName) $(TargetDir)\..\..\..\LobbyServer\bin\ /y&#xD;&#xA;xcopy $(TargetDir)$(TargetFileName) $(TargetDir)\..\..\..\GameServer\bin\ /y" />
   </Target>
 
 </Project>
