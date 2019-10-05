@@ -14,3 +14,5 @@
 /Server/LobbyServer/.vs
 /Server/LobbyServer/bin
 /Server/LobbyServer/obj
+/Server/Operation/bin
+/Server/Operation/obj

@@ -4,16 +4,31 @@ using UnityEngine.SceneManagement;
 
 public class UILogin : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        GetTabDown();
+    }
+
+    private void GetTabDown()
+    {
+#if UNITY_STANDALONE_WIN
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (username.isFocused)
+            {
+                password.Select();
+            }
+            else if (password.isFocused)
+            {
+                username.Select();
+            }
+        }
+#endif
     }
 
     public void OnClickLogin()

@@ -7,8 +7,9 @@
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "Queue"="Transparent" }
         LOD 100
+		Blend SrcAlpha OneMinusSrcAlpha
 
         Pass
         {
@@ -59,7 +60,7 @@
 				fixed3 diffuseColor = texColor * _Color * max(0, dot(normal, lightDir)) * _LightColor0.rgb;
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
-                return fixed4(diffuseColor * 1.1f + UNITY_LIGHTMODEL_AMBIENT.xyz, 1.0);
+                return fixed4(diffuseColor * 1.5f + 0.5f * diffuseColor, texColor.a * _Color.a);
             }
             ENDCG
         }

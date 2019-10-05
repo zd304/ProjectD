@@ -21,6 +21,7 @@ namespace LobbyServer
             {
                 response.ReturnCode = (short)ReturnCode.Failed;
             }
+            // response.Parameters[0] = ;
             peer.SendOperationResponse(response, sendParameters);
         }
     }
