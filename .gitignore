@@ -16,3 +16,7 @@
 /Server/LobbyServer/obj
 /Server/Operation/bin
 /Server/Operation/obj
+/Client/Library
+/Client/.vs
+/Client/obj
+/Client/Temp

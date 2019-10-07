@@ -1,17 +1,14 @@
 ﻿using Operation;
 
-public abstract class Request
+public abstract class Handler
 {
     public OperationCode OpCode { get; private set; }
 
-    public Request(OperationCode opCode)
+    public Handler(OperationCode opCode)
     {
         OpCode = opCode;
     }
 
-    public abstract void DoRequest(byte[] data);
-
-    public abstract void DoRequest<T>(T obj);
-
     public abstract void OnOperationResponse(ReturnCode returnCode, byte[] returnData);
+    public abstract void OnEvent(byte[] data);
 }

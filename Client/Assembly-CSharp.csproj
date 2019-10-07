@@ -65,12 +65,14 @@
     <Compile Include="Assets\Scripts\Misc\Tween\TweenRotation.cs" />
     <Compile Include="Assets\Scripts\Misc\Tween\TweenUIAlpha.cs" />
     <Compile Include="Assets\Scripts\Misc\Tween\TweenUIColor.cs" />
+    <Compile Include="Assets\Scripts\Photon\Handler.cs" />
     <Compile Include="Assets\Scripts\Photon\PackageHelper.cs" />
     <Compile Include="Assets\Scripts\Photon\PhotonEngine.cs" />
     <Compile Include="Assets\Scripts\Photon\PhotonEngine_RegistRequest.cs" />
-    <Compile Include="Assets\Scripts\Photon\Request.cs" />
-    <Compile Include="Assets\Scripts\Photon\Requests\LoginRequest.cs" />
-    <Compile Include="Assets\Scripts\Photon\Requests\RegistRequest.cs" />
+    <Compile Include="Assets\Scripts\Photon\Requests\LoginHandler.cs" />
+    <Compile Include="Assets\Scripts\Photon\Requests\RegistHandler.cs" />
+    <Compile Include="Assets\Scripts\Photon\Requests\RoomHandler.cs" />
+    <Compile Include="Assets\Scripts\UI\UILobby.cs" />
     <Compile Include="Assets\Scripts\UI\UILogin.cs" />
     <Compile Include="Assets\Scripts\UI\UIRegist.cs" />
     <Compile Include="Assets\Scripts\WaveEffect.cs" />

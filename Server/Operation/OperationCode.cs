@@ -4,5 +4,8 @@
     {
         Login,
         Regist,
+        MatchRequest,
+        RoomSync,
+        Ready,
     }
 }

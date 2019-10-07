@@ -8,7 +8,7 @@ public partial class PhotonEngine : MonoBehaviour, IPhotonPeerListener
     private static PhotonEngine instance = null;
 
     PhotonPeer peer;
-    Dictionary<Operation.OperationCode, Request> requests = new Dictionary<Operation.OperationCode, Request>();
+    Dictionary<Operation.OperationCode, Handler> handlers = new Dictionary<Operation.OperationCode, Handler>();
 
     public static PhotonEngine Instance
     {
@@ -24,6 +24,12 @@ public partial class PhotonEngine : MonoBehaviour, IPhotonPeerListener
         {
             return peer;
         }
+    }
+
+    public string UserName
+    {
+        set;
+        get;
     }
 
     void Awake()
@@ -53,29 +59,25 @@ public partial class PhotonEngine : MonoBehaviour, IPhotonPeerListener
         peer = new PhotonPeer(this, ConnectionProtocol.Udp);
         peer.Connect("127.0.0.1:5055", "LobbyServer");
 
-        RegistRequests();
+        RegistHandlers();
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("Login");
     }
 
     public void DoRequest<T>(Operation.OperationCode opCode, T obj)
     {
-        Request request;
-        if (!requests.TryGetValue(opCode, out request))
-        {
-            return;
-        }
-        request.DoRequest<T>(obj);
+        byte[] data = PackageHelper.Serialize<T>(obj);
+
+        Dictionary<byte, object> customParameters = new Dictionary<byte, object>();
+        customParameters[0] = data;
+        PhotonEngine.Instance.Peer.OpCustom((byte)opCode, customParameters, true);
     }
 
     public void DoRequest(Operation.OperationCode opCode, byte[] bytes)
     {
-        Request request;
-        if (!requests.TryGetValue(opCode, out request))
-        {
-            return;
-        }
-        request.DoRequest(bytes);
+        Dictionary<byte, object> customParameters = new Dictionary<byte, object>();
+        customParameters[0] = bytes;
+        PhotonEngine.Instance.Peer.OpCustom((byte)opCode, customParameters, true);
     }
 
     public void Reconnect(string ip, string port, string app)
@@ -97,24 +99,36 @@ public partial class PhotonEngine : MonoBehaviour, IPhotonPeerListener
 
     public void OnEvent(EventData eventData)
     {
+        Handler handler;
+        if (!handlers.TryGetValue((Operation.OperationCode)eventData.Code, out handler))
+        {
+            return;
+        }
+        byte[] bytes = null;
+        object o;
+        if (eventData.Parameters.TryGetValue(0, out o))
+        {
+            bytes = o as byte[];
+        }
+        handler.OnEvent(bytes);
     }
 
     public void OnOperationResponse(OperationResponse operationResponse)
     {
-        Request request;
-        if (!requests.TryGetValue((Operation.OperationCode)operationResponse.OperationCode, out request))
+        Handler handler;
+        if (!handlers.TryGetValue((Operation.OperationCode)operationResponse.OperationCode, out handler))
         {
             return;
         }
         Operation.ReturnCode returnCode = (Operation.ReturnCode)operationResponse.ReturnCode;
+        byte[] paramBytes = null;
         object param0;
-        if (!operationResponse.Parameters.TryGetValue(0, out param0))
+        if (operationResponse.Parameters.TryGetValue(0, out param0))
         {
-            param0 = null;
+            paramBytes = param0 as byte[];
         }
 
-        byte[] paramBytes = param0 as byte[];
-        request.OnOperationResponse(returnCode, paramBytes);
+        handler.OnOperationResponse(returnCode, paramBytes);
     }
 
     public void OnStatusChanged(StatusCode statusCode)
@@ -130,13 +144,13 @@ public partial class PhotonEngine : MonoBehaviour, IPhotonPeerListener
         }
     }
 
-    private void RegistRequest(Request request)
+    private void RegistHandler(Handler request)
     {
-        requests.Add(request.OpCode, request);
+        handlers.Add(request.OpCode, request);
     }
 
     private void UnregistRequest(Operation.OperationCode opCode)
     {
-        requests.Remove(opCode);
+        handlers.Remove(opCode);
     }
 }

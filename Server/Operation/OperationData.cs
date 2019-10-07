@@ -1,7 +1,14 @@
 ﻿using ProtoBuf;
+using System.Collections.Generic;
 
 namespace Operation
 {
+    [ProtoContract]
+    public class NullMessage
+    {
+
+    }
+
     [ProtoContract]
     public class UserInfo
     {
@@ -12,7 +19,32 @@ namespace Operation
     }
 
     [ProtoContract]
-    public class LoginSuccessResponse
+    public class RoomClient
+    {
+        [ProtoMember(1)]
+        public string userName;
+        [ProtoMember(2)]
+        public bool ready;
+    }
+
+    [ProtoContract]
+    public class RoomData
+    {
+        [ProtoMember(1)]
+        public int roomID;
+        [ProtoMember(2)]
+        public List<RoomClient> clientInfos = new List<RoomClient>();
+    }
+
+    [ProtoContract]
+    public class ReadyData
+    {
+        [ProtoMember(1)]
+        public int roomID;
+    }
+
+    [ProtoContract]
+    public class JoinGameServer
     {
         [ProtoMember(1)]
         public string ip;
@@ -20,5 +52,12 @@ namespace Operation
         public string port;
         [ProtoMember(3)]
         public string application;
+    }
+
+    [ProtoContract]
+    public class LoginSuccessResponse
+    {
+        [ProtoMember(1)]
+        public string userName;
     }
 }

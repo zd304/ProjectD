@@ -3,9 +3,10 @@ using ExitGames.Client.Photon;
 
 public partial class PhotonEngine : MonoBehaviour, IPhotonPeerListener
 {
-    private void RegistRequests()
+    private void RegistHandlers()
     {
-        RegistRequest(new LoginRequest());
-        RegistRequest(new RegistRequest());
+        RegistHandler(new LoginHandler());
+        RegistHandler(new RegistHandler());
+        RegistHandler(new RoomHandler());
     }
 }

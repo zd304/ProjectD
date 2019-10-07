@@ -10,6 +10,8 @@ namespace LobbyServer
         {
             RegisterHandler(new LoginHandler());
             RegisterHandler(new RegistHandler());
+            RegisterHandler(new ReadyHandler());
+            RegisterHandler(new MatchRequestHandler());
         }
     }
 }

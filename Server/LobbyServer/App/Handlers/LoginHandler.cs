@@ -23,11 +23,15 @@ namespace LobbyServer
                 response.ReturnCode = (short)ReturnCode.Failed;
             }
             LoginSuccessResponse obj = new LoginSuccessResponse();
-            obj.application = "GameServer";
-            obj.ip = "127.0.0.1";
-            obj.port = "5056";
+            obj.userName = userInfo.username;
             PackageHelper.SetData(response, PackageHelper.Serialize<LoginSuccessResponse>(obj));
             peer.SendOperationResponse(response, sendParameters);
+
+            GameApplication application = GameApplication.Instance as GameApplication;
+            if (application != null)
+            {
+                application.AddClientInfo(peer as GameClientPeer, userInfo.username);
+            }
         }
     }
 }
