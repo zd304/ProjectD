@@ -60,4 +60,29 @@ namespace Operation
         [ProtoMember(1)]
         public string userName;
     }
+
+    [ProtoContract]
+    public class JoinRoom
+    {
+        [ProtoMember(1)]
+        public int roomID;
+        [ProtoMember(2)]
+        public string userName;
+    }
+
+    [ProtoContract]
+    public class S2SRoomMember
+    {
+        [ProtoMember(1)]
+        public string userName;
+    }
+
+    [ProtoContract]
+    public class S2SCreateRoom
+    {
+        [ProtoMember(1)]
+        public int roomID;
+        [ProtoMember(2)]
+        public List<S2SRoomMember> members = new List<S2SRoomMember>();
+    }
 }

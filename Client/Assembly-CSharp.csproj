@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Photon\PackageHelper.cs" />
     <Compile Include="Assets\Scripts\Photon\PhotonEngine.cs" />
     <Compile Include="Assets\Scripts\Photon\PhotonEngine_RegistRequest.cs" />
+    <Compile Include="Assets\Scripts\Photon\Requests\JoinGameServerHandler.cs" />
     <Compile Include="Assets\Scripts\Photon\Requests\LoginHandler.cs" />
     <Compile Include="Assets\Scripts\Photon\Requests\RegistHandler.cs" />
     <Compile Include="Assets\Scripts\Photon\Requests\RoomHandler.cs" />

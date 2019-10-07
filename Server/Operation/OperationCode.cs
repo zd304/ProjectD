@@ -2,10 +2,20 @@
 {
     public enum OperationCode : byte
     {
-        Login,
+        // LobbyServer
+        Login = 0,
         Regist,
         MatchRequest,
         RoomSync,
         Ready,
+        JoinGameServer,
+
+        // GameServer
+        JoinRoom,
+    }
+
+    public enum S2SOperationCode : byte
+    {
+        CreateRoom,
     }
 }

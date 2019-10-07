@@ -31,6 +31,37 @@ namespace LobbyServer
             c.ready = true;
 
             BroadcastRoom();
+
+            if (clients.Count >= NormalRoomMaxClient)
+            {
+                foreach (var kv in clients)
+                {
+                    RoomClient client = kv.Value;
+                    if (!client.ready)
+                    {
+                        return;
+                    }
+                }
+                GameApplication application = GameApplication.Instance as GameApplication;
+                if (application == null)
+                {
+                    return;
+                }
+
+                Operation.S2SCreateRoom roomData = new Operation.S2SCreateRoom();
+                roomData.roomID = roomID;
+
+                foreach (var kv in clients)
+                {
+                    RoomClient client = kv.Value;
+
+                    Operation.S2SRoomMember member = new Operation.S2SRoomMember();
+                    member.userName = client.client.userName;
+                    roomData.members.Add(member);
+                }
+                var serverPeer = application.GetMinLoadingServerPeer();
+                serverPeer.DoRequest<Operation.S2SCreateRoom>(Operation.S2SOperationCode.CreateRoom, roomData);
+            }
         }
 
         public void RemoveClient(ClientInfo clientInfo)

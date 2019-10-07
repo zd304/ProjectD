@@ -12,6 +12,8 @@ public class RoomHandler : Handler
         LobbyData.Instance.roomID = roomData.roomID;
         LobbyData.Instance.clients = roomData.clientInfos;
         LobbyData.Instance.dirty = true;
+
+        PhotonEngine.Instance.RoomID = roomData.roomID;
     }
 
     public override void OnOperationResponse(ReturnCode returnCode, byte[] returnData)

@@ -17,11 +17,13 @@ namespace LobbyServer
     public partial class GameApplication : ApplicationBase
     {
         List<GameClientPeer> clientPeers = new List<GameClientPeer>();
+        List<GameServerPeer> serverPeers = new List<GameServerPeer>();
         Dictionary<GameClientPeer, ClientInfo> clientInfos = new Dictionary<GameClientPeer, ClientInfo>();
 
         Dictionary<int, Room> rooms = new Dictionary<int, Room>();
         static int roomGlobalID = 1;
         Dictionary<Operation.OperationCode, BaseHandler> handlers = new Dictionary<Operation.OperationCode, BaseHandler>();
+        Dictionary<Operation.S2SOperationCode, S2SBaseHandler> s2sHandlers = new Dictionary<Operation.S2SOperationCode, S2SBaseHandler>();
 
         protected override PeerBase CreatePeer(InitRequest initRequest)
         {
@@ -44,6 +46,7 @@ namespace LobbyServer
             System.Diagnostics.Debugger.Launch();
 
             RegisterHandlers();
+            RegisterS2SHandlers();
             Debug.Initialize(this);
             NHibernateHelper.Initialize();
         }
@@ -55,6 +58,15 @@ namespace LobbyServer
         {
             NHibernateHelper.Uninitialize();
             Debug.Uninitialize();
+        }
+
+        public GameServerPeer GetMinLoadingServerPeer()
+        {
+            if (serverPeers.Count <= 0)
+            {
+                return null;
+            }
+            return serverPeers[0];
         }
 
         public void RemovePeer(GameClientPeer clientPeer)
@@ -94,10 +106,33 @@ namespace LobbyServer
             return clientInfo;
         }
 
+        public ClientInfo GetClientInfo(string userName)
+        {
+            foreach (var kv in clientInfos)
+            {
+                ClientInfo clientInfo = kv.Value;
+                if (clientInfo.userName == userName)
+                {
+                    return clientInfo;
+                }
+            }
+            return null;
+        }
+
         public BaseHandler GetHandler(Operation.OperationCode opCode)
         {
             BaseHandler handler;
             if (!handlers.TryGetValue(opCode, out handler))
+            {
+                return null;
+            }
+            return handler;
+        }
+
+        public S2SBaseHandler GetS2SHandler(Operation.S2SOperationCode opCode)
+        {
+            S2SBaseHandler handler;
+            if (!s2sHandlers.TryGetValue(opCode, out handler))
             {
                 return null;
             }
@@ -112,6 +147,16 @@ namespace LobbyServer
         public void UnregisterHandler(Operation.OperationCode opCode)
         {
             handlers.Remove(opCode);
+        }
+
+        public void RegisterS2SHandler(S2SBaseHandler handler)
+        {
+            s2sHandlers.Add(handler.OpCode, handler);
+        }
+
+        public void UnregisterS2SHandler(Operation.S2SOperationCode opCode)
+        {
+            s2sHandlers.Remove(opCode);
         }
 
         public void JoinRoom(GameClientPeer client)

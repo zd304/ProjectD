@@ -4,7 +4,7 @@ using ProtoBuf;
 using Photon.SocketServer;
 using System.Collections.Generic;
 
-namespace LobbyServer
+namespace GameServer
 {
     public static class PackageHelper
     {

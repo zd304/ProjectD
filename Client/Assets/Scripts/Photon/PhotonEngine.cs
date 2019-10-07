@@ -32,6 +32,12 @@ public partial class PhotonEngine : MonoBehaviour, IPhotonPeerListener
         get;
     }
 
+    public int RoomID
+    {
+        set;
+        get;
+    }
+
     void Awake()
     {
         if (instance != null)
