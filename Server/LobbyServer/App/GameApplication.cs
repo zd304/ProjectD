@@ -31,6 +31,7 @@ namespace LobbyServer
             {
                 Debug.Log("连接到Game服务器：" + initRequest.LocalIP);
                 GameServerPeer serverPeer = new GameServerPeer(initRequest);
+                serverPeers.Add(serverPeer);
                 return serverPeer;
             }
             GameClientPeer clientPeer = new GameClientPeer(initRequest);
