@@ -9,5 +9,7 @@ public partial class PhotonEngine : MonoBehaviour, IPhotonPeerListener
         RegistHandler(new RegistHandler());
         RegistHandler(new RoomHandler());
         RegistHandler(new JoinGameServerHandler());
+
+        RegistHandler(new JoinRoomHandler());
     }
 }

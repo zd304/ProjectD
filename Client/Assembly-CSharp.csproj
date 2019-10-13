@@ -60,6 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Game\Game.cs" />
+    <Compile Include="Assets\Scripts\Misc\Tween\TweenAnchoredPosition.cs" />
     <Compile Include="Assets\Scripts\Misc\Tween\TweenBase.cs" />
     <Compile Include="Assets\Scripts\Misc\Tween\TweenPosition.cs" />
     <Compile Include="Assets\Scripts\Misc\Tween\TweenRotation.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="Assets\Scripts\Photon\PhotonEngine.cs" />
     <Compile Include="Assets\Scripts\Photon\PhotonEngine_RegistRequest.cs" />
     <Compile Include="Assets\Scripts\Photon\Requests\JoinGameServerHandler.cs" />
+    <Compile Include="Assets\Scripts\Photon\Requests\JoinRoomHandler.cs" />
     <Compile Include="Assets\Scripts\Photon\Requests\LoginHandler.cs" />
     <Compile Include="Assets\Scripts\Photon\Requests\RegistHandler.cs" />
     <Compile Include="Assets\Scripts\Photon\Requests\RoomHandler.cs" />

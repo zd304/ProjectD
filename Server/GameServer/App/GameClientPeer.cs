@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Photon.SocketServer;
 using PhotonHostRuntimeInterfaces;
 
@@ -21,6 +22,19 @@ namespace GameServer
 
         protected override void OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters)
         {
+        }
+
+        public void SendEvent<T>(Operation.OperationCode opCode, T obj)
+        {
+            EventData data = new EventData();
+            data.Code = (byte)opCode;
+
+            byte[] bytes = PackageHelper.Serialize<T>(obj);
+
+            Dictionary<byte, object> paramter = new Dictionary<byte, object>();
+            paramter.Add(0, bytes);
+            data.Parameters = paramter;
+            SendEvent(data, new SendParameters());
         }
 
         private void Update()

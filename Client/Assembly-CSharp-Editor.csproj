@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Editor\Script\Tween\GUIEditorTools.cs" />
+    <Compile Include="Assets\Editor\Script\Tween\TweenAnchoredPositionEditor.cs" />
     <Compile Include="Assets\Editor\Script\Tween\TweenBaseEditor.cs" />
     <Compile Include="Assets\Editor\Script\Tween\TweenPositionEditor.cs" />
     <Compile Include="Assets\Editor\Script\Tween\TweenRotationEditor.cs" />

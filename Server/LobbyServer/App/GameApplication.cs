@@ -44,7 +44,7 @@ namespace LobbyServer
         /// </summary>
         protected override void Setup()
         {
-            System.Diagnostics.Debugger.Launch();
+            // System.Diagnostics.Debugger.Launch();
 
             RegisterHandlers();
             RegisterS2SHandlers();

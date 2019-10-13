@@ -9,6 +9,7 @@ namespace GameServer
 
         public override void OnOperateRequest(byte[] bytes, ClientPeer peer, SendParameters sendParameters)
         {
+
         }
     }
 }

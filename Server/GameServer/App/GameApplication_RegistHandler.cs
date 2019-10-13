@@ -6,7 +6,7 @@ namespace GameServer
     {
         private void RegisterHandlers()
         {
-
+            RegisterHandler(new JoinRoomHandler());
         }
 
         private void RegisterS2SHandlers()
