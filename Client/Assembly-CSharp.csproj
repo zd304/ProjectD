@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Photon\PackageHelper.cs" />
     <Compile Include="Assets\Scripts\Photon\PhotonEngine.cs" />
     <Compile Include="Assets\Scripts\Photon\PhotonEngine_RegistRequest.cs" />
+    <Compile Include="Assets\Scripts\Photon\Requests\HandShakeHandler.cs" />
     <Compile Include="Assets\Scripts\Photon\Requests\JoinGameServerHandler.cs" />
     <Compile Include="Assets\Scripts\Photon\Requests\JoinRoomHandler.cs" />
     <Compile Include="Assets\Scripts\Photon\Requests\LoginHandler.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Assets\Scripts\UI\UILobby.cs" />
     <Compile Include="Assets\Scripts\UI\UILogin.cs" />
     <Compile Include="Assets\Scripts\UI\UIRegist.cs" />
+    <Compile Include="Assets\Scripts\UI\UISelectRace.cs" />
     <Compile Include="Assets\Scripts\WaveEffect.cs" />
     <None Include="Assets\Resources\Shaders\lowpoly.shader" />
     <None Include="Assets\Resources\Shaders\water.shader" />

@@ -7,6 +7,8 @@ namespace GameServer
 {
     public partial class GameApplication : ApplicationBase
     {
+        public new static GameApplication Instance { get { return ApplicationBase.Instance as GameApplication; } }
+
         private GameServerPeer outboundPeer;
         private List<GameClientPeer> clientPeerList = new List<GameClientPeer>();
         private Dictionary<Operation.OperationCode, BaseHandler> handlers = new Dictionary<Operation.OperationCode, BaseHandler>();

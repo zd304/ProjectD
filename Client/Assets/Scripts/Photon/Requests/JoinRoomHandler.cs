@@ -6,7 +6,10 @@ public class JoinRoomHandler : Handler
 
     public override void OnEvent(byte[] data)
     {
-
+        if (Game.Instance != null)
+        {
+            Game.Instance.selectRace.gameObject.SetActive(true);
+        }
     }
 
     public override void OnOperationResponse(ReturnCode returnCode, byte[] returnData)

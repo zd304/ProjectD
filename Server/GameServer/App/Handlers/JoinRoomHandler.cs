@@ -9,7 +9,20 @@ namespace GameServer
 
         public override void OnOperateRequest(byte[] bytes, ClientPeer peer, SendParameters sendParameters)
         {
+            JoinRoom joinRoom = PackageHelper.Desirialize<JoinRoom>(bytes);
 
+            GameApplication application = GameApplication.Instance;
+            if (application == null)
+            {
+                return;
+            }
+
+            Room room = application.GetRoom(joinRoom.roomID);
+            if (room == null)
+            {
+                return;
+            }
+            room.JoinRoom(peer as GameClientPeer, joinRoom.userName);
         }
     }
 }

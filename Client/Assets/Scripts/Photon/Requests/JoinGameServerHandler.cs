@@ -7,13 +7,14 @@ public class JoinGameServerHandler : Handler
 
     public override void OnEvent(byte[] data)
     {
+        JoinGameServer jgs = PackageHelper.Desirialize<JoinGameServer>(data);
+        PhotonEngine.Instance.Reconnect(jgs.ip, jgs.port, jgs.application);
+
+        SceneManager.LoadScene("MonoPoly1");
     }
 
     public override void OnOperationResponse(ReturnCode returnCode, byte[] returnData)
     {
-        JoinGameServer jgs = PackageHelper.Desirialize<JoinGameServer>(returnData);
-        PhotonEngine.Instance.Reconnect(jgs.ip, jgs.port, jgs.application);
-
-        SceneManager.LoadScene("MonoPoly1");
+        
     }
 }

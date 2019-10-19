@@ -11,6 +11,7 @@
         JoinGameServer,
 
         // GameServer
+        HandShake,
         JoinRoom,
     }
 

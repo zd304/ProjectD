@@ -18,7 +18,7 @@ namespace GameServer
         public List<string> userNames = new List<string>();
         public List<RoomClient> roomClients = new List<RoomClient>();
 
-        void JoinRoom(GameClientPeer peer, string userName)
+        public void JoinRoom(GameClientPeer peer, string userName)
         {
             if (!userNames.Contains(userName))
             {

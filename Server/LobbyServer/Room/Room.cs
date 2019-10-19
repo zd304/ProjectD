@@ -118,6 +118,6 @@ namespace LobbyServer
         public int roomID;
         public int maxClient;
 
-        public static readonly int NormalRoomMaxClient = 3;
+        public static readonly int NormalRoomMaxClient = 2;
     }
 }

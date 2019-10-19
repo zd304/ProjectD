@@ -93,4 +93,8 @@
     </None>
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy $(TargetDir)*.* $(TargetDir)\..\ /y" />
+  </Target>
+
 </Project>
