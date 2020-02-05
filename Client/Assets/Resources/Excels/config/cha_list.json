@@ -1,0 +1,15 @@
+{
+	"fields": [
+		{ "name": "id", "type": "int" },
+		{ "name": "name", "type": "string" },
+		{ "name": "type", "type": "int" },
+		{ "name": "race", "type": "int" },
+		{ "name": "path", "type": "string" },
+		{ "name": "halfSize", "type": "float" },
+		{ "name": "portrait", "type": "string" }
+	],
+	"files": [
+		"cha/cha_list"
+	],
+	"primaryKey": "id"
+}
