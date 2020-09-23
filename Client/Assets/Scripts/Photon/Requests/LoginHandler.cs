@@ -24,9 +24,12 @@ public class LoginHandler : Handler
         {
             LoginSuccessResponse obj = PackageHelper.Desirialize<LoginSuccessResponse>(returnData);
             PhotonEngine.Instance.UserName = obj.userName;
-            SceneManager.LoadScene("Lobby");
+            if (GameStateContext.Instance != null)
+            {
+                GameStateContext.Instance.UserName = obj.userName;
+            }
 
-            //PhotonEngine.Instance.Reconnect(obj.ip, obj.port, obj.application);
+            EventSystem.Dispatch(EventID.LoginSuccess);
         }
     }
 }

@@ -41,7 +41,7 @@ public class UILogin : MonoBehaviour
 
     public void JumpToRegist()
     {
-        SceneManager.LoadScene("Regist");
+        EventSystem.Dispatch(EventID.ClickRegist);
     }
 
     public InputField username;

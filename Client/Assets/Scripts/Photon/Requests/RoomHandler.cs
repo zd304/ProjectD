@@ -9,11 +9,12 @@ public class RoomHandler : Handler
     public override void OnEvent(byte[] data)
     {
         RoomData roomData = PackageHelper.Desirialize<RoomData>(data);
-        LobbyData.Instance.roomID = roomData.roomID;
-        LobbyData.Instance.clients = roomData.clientInfos;
-        LobbyData.Instance.dirty = true;
 
-        PhotonEngine.Instance.RoomID = roomData.roomID;
+        if (RoomSystem.Instance != null)
+        {
+            RoomSystem.Instance.clients = roomData.clientInfos;
+            RoomSystem.Instance.roomID = roomData.roomID;
+        }
     }
 
     public override void OnOperationResponse(ReturnCode returnCode, byte[] returnData)

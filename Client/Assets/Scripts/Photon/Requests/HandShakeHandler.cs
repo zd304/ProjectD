@@ -11,6 +11,6 @@ public class HandShakeHandler : Handler
 
     public override void OnOperationResponse(ReturnCode returnCode, byte[] returnData)
     {
-        Game.handshake = true;
+        EventSystem.Dispatch(EventID.HandShake);
     }
 }

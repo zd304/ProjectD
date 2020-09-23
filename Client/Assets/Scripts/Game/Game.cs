@@ -6,41 +6,49 @@ public class Game : MonoBehaviour
 {
     public static Game Instance = null;
 
-    public static bool handshake = false;
-    private bool joined = false;
+    private GameStateSystem gameStateSystem = new GameStateSystem();
+
+    public GameStateType defaultState = GameStateType.Login;
 
     public UISelectRace selectRace;
+
+    public GameStateSystem GameStateSystem
+    {
+        get
+        {
+            return gameStateSystem;
+        }
+    }
 
     private void Awake()
     {
         Instance = this;
+
+        GameObject.DontDestroyOnLoad(gameObject);
+
+        gameStateSystem.Initialize();
     }
 
     private void OnDestroy()
     {
+        gameStateSystem.Uninitialize();
+
         Instance = null;
     }
 
     
     public void Start()
     {
-        
+        gameStateSystem.SetState(defaultState);
     }
 
     private void Update()
     {
-        // 进入房间
-        if (!joined)
-        {
-            if (handshake)
-            {
-                JoinRoom joinRoom = new JoinRoom();
-                joinRoom.roomID = PhotonEngine.Instance.RoomID;
-                joinRoom.userName = PhotonEngine.Instance.UserName;
-                PhotonEngine.Instance.DoRequest(OperationCode.JoinRoom, joinRoom);
+        gameStateSystem.OnRenderTick();
+    }
 
-                joined = true;
-            }
-        }
+    private void FixedUpdate()
+    {
+        gameStateSystem.OnLogicTick();
     }
 }

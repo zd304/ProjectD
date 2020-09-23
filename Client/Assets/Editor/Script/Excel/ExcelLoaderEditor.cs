@@ -9,8 +9,8 @@ using System.Text.RegularExpressions;
 
 public class ExcelLoaderEditor
 {
-    public static readonly string DynamicFactoryCodePath = Application.dataPath + "/Scripts/Game/Excel/ExcelFactory_Dynamic.cs";
-    public static readonly string ExcelDefineCodePath = Application.dataPath + "/Scripts/Game/Excel/ExcelDefine.cs";
+    public static readonly string DynamicFactoryCodePath = Application.dataPath + "/Scripts/Core/Excel/ExcelFactory_Dynamic.cs";
+    public static readonly string ExcelDefineCodePath = Application.dataPath + "/Scripts/Core/Excel/ExcelDefine.cs";
 
     [MenuItem("Tools/Excel/生成表格代码")]
     public static void GenExcelCode()

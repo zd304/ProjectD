@@ -16,7 +16,7 @@ public class RegistHandler : Handler
     {
         if (returnCode == Operation.ReturnCode.Success)
         {
-            SceneManager.LoadScene("Login");
+            EventSystem.Dispatch(EventID.BackLogin);
         }
     }
 }

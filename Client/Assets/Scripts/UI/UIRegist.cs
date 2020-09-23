@@ -26,7 +26,7 @@ public class UIRegist : MonoBehaviour
 
     public void BackToLogin()
     {
-        SceneManager.LoadScene("Login");
+        EventSystem.Dispatch(EventID.BackLogin);
     }
 
     public InputField username;
