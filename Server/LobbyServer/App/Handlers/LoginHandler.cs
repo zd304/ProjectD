@@ -13,6 +13,11 @@ namespace LobbyServer
             Operation.UserInfo userInfo = PackageHelper.Desirialize<Operation.UserInfo>(bytes);
             Model.UserInfo dbUser = UserManager.GetByUserName(userInfo.username);
 
+            if (dbUser == null)
+            {
+                return;
+            }
+
             OperationResponse response = new OperationResponse((byte)OperationCode.Login);
             if (dbUser.Password == userInfo.password)
             {
